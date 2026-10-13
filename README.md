@@ -1,1 +1,1 @@
-You will find here a description of the code
+This depository contains the different files to generate flipping sequences for the burnt stack of pancakes -I_n.
