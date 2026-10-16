@@ -176,29 +176,36 @@ def compute_seq(seq0, n, r):
 
 def main(n):
     if n < 33:
-        return small_values(n)
-    if n %2 == 0:
+        seq = small_values(n)
+        pan = pangen(n)
+        test_seq(pan, seq, True)
+    elif n %2 == 0:
         print("The largest even value we can handle is 32")
         return None
-    r = n%12
-    #The next if/else computes the largest integer n0 = 9 mod 12 lower than n
-    if r >= 9:
-        n0 = 12 * (n//12) +9
-    else :
-        n0 = 12 * (n//12) -3 
-    pan = pangen(n0) 
-    seq0 = seq33(n0) #We first compute the value for n0
-    seq = compute_seq(seq0, n0, r) #And we apply Lemma 15 the good number of times
-    seq_tot = []
-    pan = pangen(n)
-    for i in seq:
-        seq_tot += i
-    print("flipping sequence:\n",seq_tot,'\n')
-    print("number of flips:33", len(seq_tot),'\n')
-    display_seq(pan, seq)
+    else:
+        r = n%12
+        #The next if/else computes the largest integer n0 = 9 mod 12 lower than n
+        if r >= 9:
+            n0 = 12 * (n//12) +9
+        else :
+            n0 = 12 * (n//12) -3 
+        pan = pangen(n0) 
+        seq0 = seq33(n0) #We first compute the value for n0
+        seq = compute_seq(seq0, n0, r) #And we apply Lemma 15 the good number of times
+        seq_tot = []
+        pan = pangen(n)
+        for i in seq:
+            seq_tot += i
+        print("flipping sequence:\n",seq_tot,'\n')
+        print("number of flips:33", len(seq_tot),'\n')
+        display_seq(pan, seq)
+    if pan == [i+1 for i in range(n)]:
+        print('the sequence is correct')
+    else:
+        print('the sequence is not correct')
 
 if __name__ == "__main__":
-    n = int(input("Enter the value of n :\n"))
+    n = int(input("Enter a value for n :\n"))
     main(n)
 
     
